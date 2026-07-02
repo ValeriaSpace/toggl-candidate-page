@@ -829,6 +829,12 @@
     reveals.forEach(function(el){ io.observe(el); });
   }
 
+  /* ---------- external links open in a new tab ---------- */
+  document.querySelectorAll('a[href^="http"]').forEach(function(a){
+    a.target = "_blank";
+    a.rel = "noopener";
+  });
+
   /* ---------- progress bar ---------- */
   var bar = document.querySelector(".progress");
   function onScroll(){
