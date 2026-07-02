@@ -4,7 +4,7 @@ A candidate-facing landing page that replaces the [Toggl Candidate Booklet](http
 
 ## What's on the page
 
-Seven chapters: who Toggl is, values, how we work (async/remote/results-first), an honest fit check, the six-step hiring process, benefits, and a "before you apply" section covering contract setup (Estonia = employee, elsewhere = contractor/mandatary) and gross vs. net salary expectations.
+Seven chapters: who Toggl is, values, how we work (async/remote/results-first), an honest fit check, the hiring process, benefits, and a "before you commit" section covering contract setup (Estonia = employee, elsewhere = contractor/mandatary) and gross vs. net salary expectations.
 
 ## Tech
 
