@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Toggl candidate guide: who we are, how we work, our hiring process, benefits, and what to know before you apply.">
+<title>Working at Toggl — Candidate Guide</title>
+<style>
+  :root{
+    /* Toggl brand: dark purple + peach + global yellow */
+    --plum:#2C1338;          /* purple 100% */
+    --plum-soft:#412A4C;     /* purple 90% */
+    --muted:#6B5A74;         /* purple 70% */
+    --cream:#FEF9F7;         /* peach 20% — page ground */
+    --cream-deep:#FDF1EC;    /* peach 50% — alternate bands */
+    --peach:#FCE5DB;         /* peach 100% */
+    --white:#FFFFFF;
+    --yellow:#FFDE91;        /* Toggl Global Yellow 100% */
+    --yellow-deep:#FFD67D;   /* yellow 130% */
+    /* product colors — used ONLY in the product section */
+    --track-pink:#E57CD8;
+    --plan-lilac:#A876F5;
+    --work-green:#59C9A5;
+    --hire-orange:#FF897A;
+    --line:#EAE7EB;          /* purple 10% */
+    --radius:18px;
+    --display:"GT Haptik","Avenir Next","Avenir","Futura","Century Gothic",Helvetica,system-ui,sans-serif;
+    --body:"Inter","Avenir Next","Avenir","Segoe UI",Helvetica,system-ui,-apple-system,sans-serif;
+  }
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    background:var(--cream);
+    color:var(--plum);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.1;margin:0}
+  p{margin:0}
+  a{color:inherit}
+  button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;padding:0}
+  button:focus-visible,a:focus-visible{outline:3px solid var(--yellow-deep);outline-offset:2px;border-radius:4px}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 24px}
+
+  /* ---------- section scaffolding ---------- */
+  .section{padding:120px 0}
+  .sec-anchor{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+  .sec-num{
+    font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.02em;
+    width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+    background:var(--yellow);color:var(--plum);
+  }
+  .sec-label{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .sec-title{font-size:clamp(30px,4.4vw,46px);font-weight:800;letter-spacing:-.015em;margin-bottom:16px;max-width:22ch}
+  .sec-key{font-size:19px;line-height:1.6;color:var(--plum-soft);max-width:52ch;margin-bottom:52px}
+  .sec-key b{background:linear-gradient(transparent 62%,var(--yellow) 62%)}
+  .on-dark .sec-label{color:rgba(255,255,255,.6)}
+  .on-dark .sec-key{color:rgba(255,255,255,.8)}
+
+  /* ---------- top nav + progress ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;background:rgba(254,249,247,.94);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;gap:28px;height:64px}
+  .logo{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.03em;text-decoration:none}
+  .logo .dot{color:var(--yellow-deep)}
+  .nav .btn{margin-left:auto;padding:9px 20px;font-size:14px}
+  .progress{
+    position:fixed;top:64px;left:0;height:3px;width:0;z-index:51;
+    background:var(--yellow-deep);
+  }
+
+  .btn{
+    display:inline-block;font-family:var(--display);font-weight:700;font-size:15.5px;
+    padding:14px 28px;border-radius:999px;text-decoration:none;border:2px solid transparent;
+    transition:transform .15s ease,background .15s ease,color .15s ease,border-color .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-yellow{background:var(--yellow);color:var(--plum)}
+  .btn-yellow:hover{background:var(--yellow-deep)}
+  .btn-ghost-dark{border-color:rgba(255,255,255,.5);color:var(--white)}
+  .btn-ghost-dark:hover{border-color:var(--yellow);color:var(--yellow)}
+  .btn-plum{background:var(--plum);color:var(--white)}
+  .btn-plum:hover{background:var(--plum-soft)}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--plum);color:var(--white);padding:110px 0 0;overflow:hidden}
+  .hero .eyebrow{
+    font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--yellow);margin-bottom:16px;
+  }
+  .hero h1{font-size:clamp(42px,6.4vw,72px);font-weight:800;letter-spacing:-.02em;max-width:15ch;margin-bottom:24px}
+  .squiggle{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8 Q 12 2 22 8 T 42 8 T 62 8 T 82 8 T 102 8 T 122 8' fill='none' stroke='%23FFDE91' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:0 100%;background-size:100% .18em;
+    padding-bottom:.16em;
+  }
+  .hero-sub{max-width:50ch;font-size:19px;line-height:1.7;color:rgba(255,255,255,.82);margin-bottom:36px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:76px}
+  .stats{border-top:1px solid rgba(255,255,255,.18);display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:30px 24px 36px;border-left:1px solid rgba(255,255,255,.18)}
+  .stat:first-child{border-left:none;padding-left:0}
+  .stat b{
+    display:block;font-family:var(--display);font-size:clamp(26px,3vw,36px);font-weight:800;
+    font-variant-numeric:tabular-nums;margin-bottom:4px;color:var(--yellow);
+  }
+  .stat span{font-size:14px;color:rgba(255,255,255,.72)}
+  .stat:nth-child(1) b{color:var(--yellow)}
+  .stat:nth-child(2) b{color:var(--track-pink)}
+  .stat:nth-child(3) b{color:var(--hire-orange)}
+  .stat:nth-child(4) b{color:var(--plan-lilac)}
+  @media (max-width:820px){
+    .stats{grid-template-columns:1fr 1fr}
+    .stat{padding-left:0;border-left:none}
+  }
+
+  /* ---------- table of contents ---------- */
+  .toc{padding:80px 0;border-bottom:1.5px solid var(--line)}
+  .toc-inner{display:grid;grid-template-columns:.8fr 1.5fr;gap:64px;align-items:start}
+  @media (max-width:820px){.toc-inner{grid-template-columns:1fr;gap:32px}}
+  .toc-intro h2{font-size:clamp(26px,3.2vw,34px);font-weight:800;letter-spacing:-.015em;margin-bottom:12px}
+  .toc-intro p{font-size:15.5px;color:var(--muted);line-height:1.65;max-width:34ch}
+  .toc-list{border-top:1.5px solid var(--line)}
+  .toc-row{
+    display:flex;align-items:center;gap:18px;text-decoration:none;
+    padding:17px 10px;border-bottom:1.5px solid var(--line);
+    transition:background .15s ease;
+  }
+  .toc-row:hover,.toc-row:focus-visible{background:var(--white)}
+  .toc-row .toc-num{
+    font-family:var(--display);font-weight:800;font-size:12.5px;flex:none;
+    width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+    background:var(--yellow);color:var(--plum);
+  }
+  .toc-row b{font-family:var(--display);font-size:16.5px;line-height:1.3;flex:none}
+  .toc-row .toc-desc{
+    font-size:13.5px;color:var(--muted);line-height:1.4;margin-left:auto;text-align:right;
+  }
+  .toc-row .toc-arrow{
+    flex:none;color:var(--muted);font-weight:700;
+    transition:transform .18s ease,color .18s ease;
+  }
+  .toc-row:hover .toc-arrow{transform:translateY(3px);color:var(--plum)}
+  .toc-badge{
+    flex:none;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    background:var(--yellow);color:var(--plum);border-radius:999px;padding:3px 10px;
+  }
+  @media (max-width:620px){
+    .toc-row .toc-desc{display:none}
+    .toc-row .toc-arrow{margin-left:auto}
+  }
+
+  /* ---------- 01 who we are (products keep their colors) ---------- */
+  .who-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media (max-width:760px){.who-grid{grid-template-columns:1fr}}
+  .product-card{
+    border-radius:var(--radius);padding:24px 26px;border:1.5px solid var(--line);background:var(--white);
+    border-top:5px solid var(--pc,var(--plum));
+    transition:transform .2s ease;
+  }
+  .product-card:hover{transform:translateY(-3px)}
+  .product-card h3{font-size:18px;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .product-card p{font-size:15px;color:var(--muted);line-height:1.6}
+  .tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background:var(--pc,var(--plum));color:var(--plum)}
+  .tag-dark{color:var(--peach)}
+  .who-note{margin-top:28px;font-size:15.5px;color:var(--muted);max-width:66ch}
+
+  /* ---------- 02 values ---------- */
+  .sec-values{background:var(--white);border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+  .value-pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+  .value-pill{
+    font-family:var(--display);font-weight:700;font-size:15px;
+    padding:10px 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--cream);
+    transition:background .18s ease,border-color .18s ease,transform .18s ease;
+  }
+  .value-pill:hover{transform:translateY(-2px);border-color:var(--plum)}
+  .value-pill[aria-selected="true"]{background:var(--yellow);border-color:var(--yellow);color:var(--plum)}
+  .value-stage{
+    border:1.5px solid var(--line);border-radius:24px;padding:44px 48px;background:var(--cream);
+    display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;min-height:150px;
+  }
+  @media (max-width:640px){.value-stage{grid-template-columns:1fr;padding:32px 28px}}
+  .value-mark{width:64px;height:64px;border-radius:20px;background:var(--yellow);flex:none}
+  .value-stage h3{font-size:26px;margin-bottom:8px}
+  .value-stage p{font-size:17px;color:var(--plum-soft);max-width:56ch}
+  .value-fade{animation:vfade .3s ease}
+  @keyframes vfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  /* ---------- 03 how we work: tabs ---------- */
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:0}
+  .tab{
+    font-family:var(--display);font-weight:700;font-size:15px;
+    padding:12px 22px;border-radius:14px 14px 0 0;border:1.5px solid transparent;border-bottom:none;
+    color:var(--muted);transition:color .15s ease,background .15s ease;
+  }
+  .tab:hover{color:var(--plum)}
+  .tab[aria-selected="true"]{background:var(--white);border-color:var(--line);color:var(--plum)}
+  .tab-panel{
+    background:var(--white);border:1.5px solid var(--line);border-radius:0 var(--radius) var(--radius) var(--radius);
+    padding:44px 48px;display:none;
+  }
+  .tab-panel.show{display:grid;grid-template-columns:1fr 1fr;gap:40px;animation:vfade .3s ease}
+  @media (max-width:760px){.tab-panel.show{grid-template-columns:1fr;padding:30px 26px}}
+  .tab-panel h3{font-size:24px;margin-bottom:12px}
+  .tab-panel .big{font-size:17px;line-height:1.7;color:var(--plum-soft)}
+  .tab-panel .side{
+    border-left:4px solid var(--yellow);padding:6px 0 6px 22px;align-self:center;
+    font-size:15.5px;color:var(--muted);line-height:1.7;
+  }
+  .tab-panel .side b{color:var(--plum);font-family:var(--display)}
+
+  .quote-band{background:var(--plum);border-radius:24px;padding:52px 48px;color:var(--white);margin-top:56px}
+  .quote-band blockquote{margin:0;font-family:var(--display)}
+  .quote-band .q{font-size:clamp(24px,3.4vw,34px);font-weight:700;line-height:1.3;text-wrap:balance}
+  .quote-band .q em{font-style:normal;color:var(--yellow)}
+  .quote-band footer{margin-top:16px;font-family:var(--body);font-size:14px;color:rgba(255,255,255,.6)}
+  @media (max-width:640px){.quote-band{padding:36px 26px}}
+
+  /* ---------- 04 fit check ---------- */
+  .sec-fit{background:var(--cream-deep)}
+  .fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media (max-width:760px){.fit-grid{grid-template-columns:1fr}}
+  .fit-col{border-radius:var(--radius);padding:34px}
+  .fit-yes{background:var(--white);border:1.5px solid var(--line)}
+  .fit-no{background:var(--plum);color:var(--white)}
+  .fit-col h3{font-size:20px;margin-bottom:18px}
+  .fit-col ul{list-style:none;margin:0;padding:0;display:grid;gap:13px}
+  .fit-col li{padding-left:30px;position:relative;font-size:15.5px;line-height:1.5}
+  .fit-yes li::before{content:"✓";position:absolute;left:0;top:0;font-weight:800;color:var(--plum)}
+  .fit-no li{color:rgba(255,255,255,.85)}
+  .fit-no li::before{content:"✕";position:absolute;left:0;top:0;font-weight:800;color:var(--yellow)}
+  .honesty{
+    margin-top:22px;border-left:4px solid var(--yellow);background:var(--white);
+    border-radius:0 var(--radius) var(--radius) 0;padding:20px 26px;font-size:16px;max-width:72ch;
+  }
+
+  /* ---------- 05 hiring: interactive timeline ---------- */
+  .timeline{position:relative;margin-top:8px}
+  .timeline::before{
+    content:"";position:absolute;left:23px;top:14px;bottom:14px;width:2px;
+    background:var(--line);
+  }
+  .t-step{position:relative;padding:0 0 14px 76px}
+  .t-node{
+    position:absolute;left:0;top:0;width:48px;height:48px;border-radius:50%;
+    background:var(--white);border:2px solid var(--line);
+    display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:15px;
+    transition:background .2s ease,border-color .2s ease;z-index:1;
+  }
+  .t-step.open .t-node{background:var(--yellow);border-color:var(--yellow)}
+  .t-head{
+    display:flex;align-items:center;gap:12px;width:100%;text-align:left;
+    padding:11px 0;
+  }
+  .t-head h3{font-size:19px;transition:color .15s ease}
+  .t-head:hover h3{color:var(--muted)}
+  .t-head .chev{
+    margin-left:auto;flex:none;width:26px;height:26px;border-radius:50%;
+    border:1.5px solid var(--line);display:grid;place-items:center;font-size:13px;font-weight:700;
+    transition:transform .25s ease,background .2s ease;
+  }
+  .t-step.open .chev{transform:rotate(45deg);background:var(--yellow);border-color:var(--yellow)}
+  .t-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+  .t-step.open .t-body{grid-template-rows:1fr}
+  .t-body-in{overflow:hidden}
+  .t-body p{font-size:15.5px;color:var(--muted);max-width:62ch;padding:2px 0 22px}
+  .or{
+    font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);background:var(--cream-deep);border-radius:999px;padding:2px 9px;margin:0 2px;
+  }
+  .async-note{
+    margin-top:44px;background:var(--plum);color:var(--white);border-radius:var(--radius);
+    padding:30px 34px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
+  }
+  .async-note .pulse{width:14px;height:14px;border-radius:50%;background:var(--yellow);margin-top:7px;animation:pulse 2.4s ease infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,222,145,.5)}50%{box-shadow:0 0 0 9px rgba(255,222,145,0)}}
+  .async-note b{font-family:var(--display);display:block;margin-bottom:4px}
+  .async-note p{font-size:15px;color:rgba(255,255,255,.8)}
+
+  /* ---------- 06 benefits: grouped ---------- */
+  .sec-benefits{background:var(--white);border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+  .bene-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media (max-width:900px){.bene-groups{grid-template-columns:1fr}}
+  .bene-group{
+    border:1.5px solid var(--line);border-radius:22px;overflow:hidden;background:var(--cream);
+    transition:transform .2s ease;
+  }
+  .bene-group:hover{transform:translateY(-4px)}
+  .bene-head{padding:24px 26px 20px;background:var(--yellow)}
+  .bene-head h3{font-size:19px}
+  .bene-head span{font-size:13.5px;color:rgba(44,19,56,.7)}
+  .bene-head-peach{background:var(--peach)}
+  .bene-head-plum{background:var(--plum)}
+  .bene-head-plum h3{color:var(--white)}
+  .bene-head-plum span{color:rgba(255,255,255,.75)}
+  .bene-group ul{list-style:none;margin:0;padding:10px 26px 22px;display:grid}
+  .bene-group li{
+    display:grid;grid-template-columns:34px 1fr;gap:2px 10px;align-items:baseline;
+    padding:13px 0;border-top:1px solid var(--line);font-size:15px;
+  }
+  .bene-group li:first-child{border-top:none}
+  .bene-group li .e{font-size:19px;grid-column:1;grid-row:1}
+  .bene-group li b{font-family:var(--display);font-size:15.5px;grid-column:2;grid-row:1}
+  .bene-group li span:not(.e){grid-column:2;grid-row:2;color:var(--muted);font-size:13.5px;line-height:1.45}
+
+  /* ---------- 07 before you apply ---------- */
+  .apply-panel{background:var(--plum);color:var(--white);border-radius:28px;padding:64px 56px}
+  @media (max-width:700px){.apply-panel{padding:44px 26px}}
+  .apply-panel .sec-num{background:var(--yellow);color:var(--plum)}
+  .apply-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+  .apply-chip{
+    font-family:var(--display);font-weight:700;font-size:14px;
+    border:1.5px solid rgba(255,255,255,.3);border-radius:999px;padding:9px 18px;
+    color:rgba(255,255,255,.9);
+  }
+  .apply-chip b{color:var(--yellow)}
+  .acc{border-top:1.5px solid rgba(255,255,255,.2)}
+  .acc:last-of-type{border-bottom:1.5px solid rgba(255,255,255,.2)}
+  .acc-head{
+    width:100%;display:flex;align-items:center;gap:14px;text-align:left;padding:22px 4px;
+  }
+  .acc-head h3{font-size:18px;color:var(--white);transition:color .15s ease}
+  .acc-head:hover h3{color:var(--yellow)}
+  .acc-head .chev{
+    margin-left:auto;flex:none;width:26px;height:26px;border-radius:50%;
+    border:1.5px solid rgba(255,255,255,.4);display:grid;place-items:center;font-size:13px;font-weight:700;
+    transition:transform .25s ease,background .2s ease,color .2s ease;
+  }
+  .acc.open .chev{transform:rotate(45deg);background:var(--yellow);border-color:var(--yellow);color:var(--plum)}
+  .acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+  .acc.open .acc-body{grid-template-rows:1fr}
+  .acc-body-in{overflow:hidden}
+  .acc-body p{font-size:15.5px;color:rgba(255,255,255,.82);max-width:68ch;padding:0 4px 24px;line-height:1.7}
+  .acc-body p b{color:var(--yellow)}
+  .salary-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 4px 26px}
+  @media (max-width:700px){.salary-cols{grid-template-columns:1fr}}
+  .salary-col{background:rgba(255,255,255,.07);border-radius:14px;padding:20px}
+  .salary-col b{font-family:var(--display);display:block;margin-bottom:6px;font-size:15.5px;color:var(--yellow)}
+  .salary-col p{font-size:14.5px;color:rgba(255,255,255,.8);line-height:1.6;padding:0}
+
+  /* ---------- closing ---------- */
+  .closing{text-align:center;padding:120px 0 100px}
+  .closing h2{font-size:clamp(34px,5vw,54px);font-weight:800;letter-spacing:-.015em;margin-bottom:16px}
+  .closing p{color:var(--muted);font-size:18px;max-width:50ch;margin:0 auto 34px}
+  .closing .hearts{font-size:26px;letter-spacing:6px;display:block;margin-bottom:22px}
+  .social{margin-top:32px;display:flex;gap:24px;justify-content:center;font-size:14.5px;font-weight:600;flex-wrap:wrap}
+  .social a{color:var(--plum-soft);text-decoration:none;border-bottom:2px solid var(--yellow-deep)}
+  .social a:hover{color:var(--muted)}
+  footer.page-foot{border-top:1px solid var(--line);padding:28px 0;font-size:13.5px;color:var(--muted)}
+  footer.page-foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  /* ---------- inline links ---------- */
+  .ext-link{
+    font-weight:700;color:var(--plum);text-decoration:underline;
+    text-decoration-color:var(--yellow-deep);text-decoration-thickness:2px;text-underline-offset:3px;
+  }
+  .ext-link:hover{text-decoration-color:var(--plum)}
+  .on-dark .ext-link,.tab-panel .side .ext-link{font-weight:700}
+  .quote-band .ext-link,.async-note .ext-link,.fit-no .ext-link{color:var(--white);text-decoration-color:var(--yellow)}
+  .link-note{margin-top:28px;font-size:15px;color:var(--muted)}
+  .prod-link{color:inherit;text-decoration:none;border-bottom:2.5px solid var(--pc,var(--line))}
+  .prod-link:hover{color:var(--muted)}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="#top">toggl<span class="dot">.</span></a>
+    <a class="btn btn-plum" href="https://toggl.com/jobs/">See open roles</a>
+  </div>
+</nav>
+<div class="progress" aria-hidden="true"></div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Toggl · Candidate guide</p>
+    <h1>So, you're thinking about <span class="squiggle">joining&nbsp;Toggl?</span></h1>
+    <p class="hero-sub">A short, honest guide for candidates: who we are, how we work, and how hiring works here. Explore section by section — no fluff, no surprises.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-yellow" href="#contents">Start exploring ↓</a>
+      <a class="btn btn-ghost-dark" href="#before">How we hire — read this first</a>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><b>~100</b><span>Togglers on the team</span></div>
+      <div class="stat reveal"><b>40+</b><span>countries we work from</span></div>
+      <div class="stat reveal"><b>2014</b><span>remote-first ever since</span></div>
+      <div class="stat reveal"><b>Day one</b><span>bootstrapped &amp; profitable</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ TABLE OF CONTENTS ============ -->
+<section class="toc" id="contents" aria-label="Table of contents">
+  <div class="wrap">
+    <div class="toc-inner">
+      <div class="toc-intro reveal">
+        <h2>What's inside</h2>
+        <p>A ~5-minute read, in seven short chapters. Jump to what matters most to you — or just keep scrolling.</p>
+      </div>
+      <div class="toc-list reveal">
+        <a class="toc-row" href="#who">
+          <span class="toc-num">01</span><b>Who we are</b>
+          <span class="toc-desc">Toggl in a nutshell, and what we're building</span>
+          <span class="toc-arrow" aria-hidden="true">↓</span>
+        </a>
+        <a class="toc-row" href="#values">
+          <span class="toc-num">02</span><b>Values</b>
+          <span class="toc-desc">The seven things we actually run on</span>
+          <span class="toc-arrow" aria-hidden="true">↓</span>
+        </a>
+        <a class="toc-row" href="#how">
+          <span class="toc-num">03</span><b>How we work</b>
+          <span class="toc-desc">Remote, async, results over hours</span>
+          <span class="toc-arrow" aria-hidden="true">↓</span>
+        </a>
+        <a class="toc-row" href="#fit">
+          <span class="toc-num">04</span><b>Is it a fit?</b>
+          <span class="toc-desc">An honest look at who thrives here</span>
+          <span class="toc-arrow" aria-hidden="true">↓</span>
+        </a>
+        <a class="toc-row" href="#hiring">
+          <span class="toc-num">05</span><b>Hiring process</b>
+          <span class="toc-desc">Six steps, from skills test to offer</span>
+          <span class="toc-arrow" aria-hidden="true">↓</span>
+        </a>
+        <a class="toc-row" href="#benefits">
+          <span class="toc-num">06</span><b>Benefits</b>
+          <span class="toc-desc">Time off, growth budgets, and gear</span>
+          <span class="toc-arrow" aria-hidden="true">↓</span>
+        </a>
+        <a class="toc-row" href="#before">
+          <span class="toc-num">07</span><b>Before you apply</b>
+          <span class="toc-badge">Read this</span>
+          <span class="toc-desc">Contracts &amp; gross vs. net salary</span>
+          <span class="toc-arrow" aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 WHO WE ARE ============ -->
+<section class="section" id="who">
+  <div class="wrap">
+    <div class="sec-anchor reveal"><span class="sec-num">01</span><span class="sec-label">Who we are</span></div>
+    <h2 class="sec-title reveal">A profitable, remote-first team of ~100</h2>
+    <p class="sec-key reveal">We build the world's most loved productivity platform — <b>bootstrapped, profitable since day one</b>, and working from 40+ countries. Right now, we're unifying our products into <b>one modular platform: Toggl</b>.</p>
+    <div class="who-grid">
+      <div class="product-card reveal" style="--pc:var(--plum)">
+        <h3><a class="prod-link" href="https://toggl.com/focus/">Toggl</a> <span class="tag tag-dark">The future</span></h3>
+        <p>The new Toggl: a modular, time-data-powered platform combining tracking, planning, and insights.</p>
+      </div>
+      <div class="product-card reveal" style="--pc:var(--track-pink)">
+        <h3><a class="prod-link" href="https://toggl.com/track/">Track</a> <span class="tag">Legacy flagship</span></h3>
+        <p>Our original time tracker and revenue driver — its users are moving to the new, improved Toggl.</p>
+      </div>
+      <div class="product-card reveal" style="--pc:var(--plan-lilac)">
+        <h3><a class="prod-link" href="https://toggl.com/plan/">Plan</a> <span class="tag">Being integrated</span></h3>
+        <p>Project and capacity planning, folding into the platform to bridge tracking and planning fluidly.</p>
+      </div>
+      <div class="product-card reveal" style="--pc:var(--work-green)">
+        <h3><a class="prod-link" href="https://toggl.com/work/">Work</a> <span class="tag">Becoming a module</span></h3>
+        <p>Expense and time-off management, soon a module inside Toggl.</p>
+      </div>
+    </div>
+    <p class="who-note reveal">Why teams use Toggl: to plan work with confidence, track time without friction, and understand utilization and profitability with real data — not guesses. Curious how we got here? <a class="ext-link" href="https://www.notion.so/toggl/The-Toggl-Story-b731598fc70c4dc7bf378a02b66f8a0b">Read The Toggl Story ↗</a></p>
+  </div>
+</section>
+
+<!-- ============ 02 VALUES ============ -->
+<section class="section sec-values" id="values">
+  <div class="wrap">
+    <div class="sec-anchor reveal"><span class="sec-num">02</span><span class="sec-label">Culture &amp; values</span></div>
+    <h2 class="sec-title reveal">Seven values we actually run on</h2>
+    <p class="sec-key reveal">Tap a value to see what it means in practice.</p>
+    <div class="value-pills reveal" role="tablist" aria-label="Toggl values"></div>
+    <div class="value-stage reveal" id="value-stage">
+      <div class="value-mark" aria-hidden="true"></div>
+      <div id="value-content"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 HOW WE WORK ============ -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="sec-anchor reveal"><span class="sec-num">03</span><span class="sec-label">How we work</span></div>
+    <h2 class="sec-title reveal">Results and freedom, in that order</h2>
+    <p class="sec-key reveal">Work when you want, where you want. We care about <b>what ships, not when you clocked in</b>. Here's how that works day to day.</p>
+    <div class="tabs reveal" role="tablist" aria-label="How we work"></div>
+    <div id="how-panels" class="reveal"></div>
+    <div class="quote-band reveal">
+      <blockquote>
+        <p class="q">"When it comes to evaluating performance, we measure <em>output</em>, not input."</p>
+        <footer>How performance works at Toggl — remote-first since 2014</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 FIT ============ -->
+<section class="section sec-fit" id="fit">
+  <div class="wrap">
+    <div class="sec-anchor reveal"><span class="sec-num">04</span><span class="sec-label">Is it a fit?</span></div>
+    <h2 class="sec-title reveal">Freedom comes with fine print</h2>
+    <p class="sec-key reveal">Our culture works because the people here make it work. An honest look at both sides:</p>
+    <div class="fit-grid">
+      <div class="fit-col fit-yes reveal">
+        <h3>You'll thrive here if you…</h3>
+        <ul>
+          <li>Care about users and the quality of what you ship</li>
+          <li>Take ownership and follow through without being chased</li>
+          <li>Communicate clearly — and write things down</li>
+          <li>Speak up when something isn't working</li>
+          <li>Enjoy autonomy and can structure your own day</li>
+        </ul>
+      </div>
+      <div class="fit-col fit-no reveal">
+        <h3>It might not be your place if you…</h3>
+        <ul>
+          <li>Are here mainly because "remote" sounds comfortable</li>
+          <li>Need meetings and supervision to keep momentum</li>
+          <li>Find written, async communication a chore</li>
+          <li>Want to skip team meetups — we expect everyone there</li>
+        </ul>
+      </div>
+    </div>
+    <p class="honesty reveal"><strong>We'll be upfront:</strong> remote work and flexibility are part of Toggl. But if that's the only reason you're interested, this may not be the right match — and that's okay.</p>
+  </div>
+</section>
+
+<!-- ============ 05 HIRING ============ -->
+<section class="section" id="hiring">
+  <div class="wrap">
+    <div class="sec-anchor reveal"><span class="sec-num">05</span><span class="sec-label">Hiring process</span></div>
+    <h2 class="sec-title reveal">Six steps, skills first</h2>
+    <p class="sec-key reveal">We look for two things: <b>the right skills for the role</b>, and <b>Toggl's values</b>. Steps vary by position and seniority — tap each step for details.</p>
+    <div class="timeline reveal" id="timeline"></div>
+    <div class="async-note reveal">
+      <div class="pulse" aria-hidden="true"></div>
+      <div>
+        <b>Our hiring is remote-first and async — on purpose.</b>
+        <p>Human interaction happens later in the process. Not because it matters less, but because our small Talent team is built to operate efficiently — it's how we guarantee every candidate a transparent and fair screening.</p>
+        <p style="margin-top:12px">🚀 Preparing? Our <a class="ext-link" href="https://www.notion.so/toggl/Ace-Your-Interview-cda2148086d74620944269b744a29630">Ace Your Interview guide ↗</a> has insider tips on what we look for and how to highlight your skills.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 BENEFITS ============ -->
+<section class="section sec-benefits" id="benefits">
+  <div class="wrap">
+    <div class="sec-anchor reveal"><span class="sec-num">06</span><span class="sec-label">Perks &amp; benefits</span></div>
+    <h2 class="sec-title reveal">How we take care of Togglers</h2>
+    <p class="sec-key reveal">Every Toggler gets the same package — <b>employee or contractor, wherever you live</b>.</p>
+    <div class="bene-groups">
+      <div class="bene-group reveal">
+        <div class="bene-head"><h3>Time &amp; rest</h3><span>Recharge is part of the job</span></div>
+        <ul>
+          <li><span class="e">🌴</span><b>24 days paid vacation</b><span>Business days, available immediately</span></li>
+          <li><span class="e">🤒</span><b>Uncapped sick leave</b><span>Get better, don't count days</span></li>
+          <li><span class="e">🔋</span><b>Paid sabbatical</b><span>4–6 weeks, based on tenure</span></li>
+          <li><span class="e">🐣</span><b>Paid parental leave</b><span>For new parents</span></li>
+        </ul>
+      </div>
+      <div class="bene-group reveal">
+        <div class="bene-head bene-head-peach"><h3>Growth &amp; wellbeing</h3><span>Invest in yourself, on us</span></div>
+        <ul>
+          <li><span class="e">🌱</span><b>Annual salary increases</b><span>Based on performance</span></li>
+          <li><span class="e">📚</span><b>€4,000 / year development</b><span>Courses, conferences, coaching</span></li>
+          <li><span class="e">🩺</span><b>€2,400 / year health &amp; wellness</b><span>Your health, your choice</span></li>
+          <li><span class="e">🛩️</span><b>Team meetups covered</b><span>Three times a year, on us</span></li>
+        </ul>
+      </div>
+      <div class="bene-group reveal">
+        <div class="bene-head bene-head-plum"><h3>Gear &amp; setup</h3><span>Your office, anywhere</span></div>
+        <ul>
+          <li><span class="e">💻</span><b>€2,500 laptop budget</b><span>Refreshed every 3 years</span></li>
+          <li><span class="e">🪑</span><b>€2,000 home office setup</b><span>Plus €300 yearly after 3 years</span></li>
+          <li><span class="e">📡</span><b>€3,000 / year co-working &amp; internet</b><span>Work from wherever works</span></li>
+          <li><span class="e">👓</span><b>Essential work tools</b><span>Including eyeglasses</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="link-note reveal">Want the fine print? The full list lives in our public <a class="ext-link" href="https://www.notion.so/toggl/Benefits-f510940284134d29af7c0c161d1676c7">Benefits &amp; Perks page ↗</a></p>
+  </div>
+</section>
+
+<!-- ============ 07 BEFORE YOU APPLY ============ -->
+<section class="section" id="before">
+  <div class="wrap">
+    <div class="apply-panel on-dark reveal">
+      <div class="sec-anchor"><span class="sec-num">07</span><span class="sec-label">Before you apply</span></div>
+      <h2 class="sec-title" style="color:var(--white)">How we hire, in plain terms</h2>
+      <p class="sec-key">The practical facts — contracts and salary — that we'd rather you know <b style="background:none;color:var(--yellow)">now</b> than discover mid-process. The short version:</p>
+      <div class="apply-chips">
+        <span class="apply-chip"><b>Full-time</b> &amp; permanent roles</span>
+        <span class="apply-chip">🇪🇪 Estonia → <b>employee</b></span>
+        <span class="apply-chip">🌍 Elsewhere → <b>contractor</b></span>
+        <span class="apply-chip">Salary ads = <b>gross</b> amount</span>
+        <span class="apply-chip"><b>Same benefits</b> for everyone</span>
+      </div>
+      <div id="apply-accordions"></div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap reveal">
+    <span class="hearts" aria-hidden="true">💜💛</span>
+    <h2>Sounds good?</h2>
+    <p>If you care about users, take ownership, and do your best work with freedom and trust — we'd love to meet you.</p>
+    <a class="btn btn-plum" href="https://toggl.com/jobs/">See open roles at Toggl</a>
+    <div class="social">
+      <a href="https://www.notion.so/toggl/9f4dbddf44af4fe9af027e26cb7fe7dc">Team Handbook</a>
+      <a href="https://www.instagram.com/toggltrack/">Instagram</a>
+      <a href="https://www.linkedin.com/company/toggl/">LinkedIn</a>
+      <a href="https://toggl.com/about/">More about Toggl</a>
+    </div>
+  </div>
+</section>
+
+<footer class="page-foot">
+  <div class="wrap">
+    <span>© Toggl · Remote-first since 2014 · Bootstrapped and proud of it</span>
+    <span>Made with trust, not surveillance</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- data ---------- */
+  var VALUES = [
+    {name:"Trust", d:"Central to our products and our operations. No micromanagement, no surveillance — here or in what we build."},
+    {name:"Communication", d:"We err on the side of over-communicating. It's the oxygen of a remote team."},
+    {name:"Respect", d:"We embrace diversity and support individual needs."},
+    {name:"Sustained speed", d:"Agile and fast — at a pace we can keep up, to stay ahead of the competition."},
+    {name:"Ownership", d:"It keeps our culture thriving and encourages initiative and innovation."},
+    {name:"Innovativeness", d:"Committed to being bold and creative in the pursuit of continuous improvement."},
+    {name:"Freedom", d:"We advocate for autonomy and individuality — in how, when, and where you work."}
+  ];
+
+  var HOW = [
+    {tab:"Results, not hours", h:"Output is what counts",
+     big:"We measure success by achievements, not hours spent. Stop at 4pm for your kid, wrap up that evening — no guilt, just productivity. Teams work across time zones without constraints.",
+     side:"<b>In practice:</b> flexible hours, any time zone, and performance conversations about what you shipped — never about when you were online."},
+    {tab:"Async-first", h:"Written, thoughtful, undisturbed",
+     big:"We maximize asynchronous communication through Notion and Slack to bridge time zones and protect deep work. Transparency is the default — everyone is empowered to find information independently.",
+     side:"<b>In practice:</b> fewer meetings, more writing. It's anchored in our <a class='ext-link' href='https://www.notion.so/toggl/RAFT-Results-and-Accountability-First-at-Toggl-2e5886716e884b85abff01fbb4b9b73f'>RAFT principles ↗</a> — Results and Accountability First at Toggl."},
+    {tab:"Trust, not surveillance", h:"No one is watching over your shoulder",
+     big:"We've built our culture — and our products — on trust, not monitoring. No micromanagement; instead, we empower people and expect ownership in return.",
+     side:"<b>In practice:</b> our tools enhance productivity without invasive tracking. Trust isn't a feature; it's the principle. <a class='ext-link' href='https://toggl.com/track/anti-surveillance-statement/'>Read our anti-surveillance statement ↗</a>"},
+    {tab:"Small teams", h:"Tribes with real ownership",
+     big:"We're organized into Tribes: cross-functional groups owning outcomes for a specific type of user. Inside them, teams of 3–5 prototype, test, ship, and iterate — no heavy approval layers.",
+     side:"<b>In practice:</b> problems are well defined, success is measurable, and teams are trusted to decide based on user feedback."},
+    {tab:"Together IRL", h:"Remote doesn't mean distant",
+     big:"We bring the whole team together for three annual meetups — one team meetup and two company-wide, expenses covered. We invite and expect everyone to join.",
+     side:"<b>In practice:</b> between meetups, bi-weekly all-hands video calls we call <b>Kitchen Fires</b> keep everyone aligned and learning together."}
+  ];
+
+  var STEPS = [
+    {t:"Skills test <span class='or'>and / or</span> video intro",
+     d:"We use skill and video tests for initial screening — prioritizing what you can do over what your resume says."},
+    {t:"Home assignment <span class='or'>or</span> live coding test drive",
+     d:"The home assignment is a piece of actual work closely related to the role — your chance to show hands-on skills. For engineers, it's a real-time coding assessment instead."},
+    {t:"Cultural interview",
+     d:"A video call with our Talent team to explore our culture and assess mutual fit — your values, and your unique contribution."},
+    {t:"Hiring manager interview <span class='or'>or</span> role play",
+     d:"A deep dive into your technical background, the team, and the role. For sales roles, this may be a role play — think managing a disgruntled customer or delivering a pitch."},
+    {t:"Paid test week",
+     d:"A 3–5 day engagement working flexibly on typical tasks at €19/hour — using Toggl to track time, naturally. A real glimpse into working with us, in both directions."},
+    {t:"Offer",
+     d:"We extend offers to candidates we believe will excel here and make the team better. Welcome aboard."}
+  ];
+
+  var APPLY = [
+    {t:"Your contract depends on where you live",
+     html:"<p>All of our open positions are meant to be <b>full-time, permanent opportunities</b>. Our headquarters are in Estonia, so all <b>Estonian residents are hired as permanent employees</b>. Candidates everywhere else are hired as <b>independent contractors or mandataries</b> — it's what makes worldwide hiring and flexibility possible.</p>"},
+    {t:"Salary in job ads is always gross (bruto)",
+     html:"<p>The salary listed in our job descriptions is always the <b>gross amount, before any taxes</b> — regardless of contract type or location. What that means for your net:</p>" +
+      "<div class='salary-cols'><div class='salary-col'><b>Based in Estonia</b><p>Hired as an employee, your net salary will usually be around 20–22% lower than the listed gross, based on local tax rates.</p></div>" +
+      "<div class='salary-col'><b>Based outside Estonia</b><p>The salary is still shown as gross. Your final net depends on the tax rules, social contributions, and employment setup in your country of residence.</p></div></div>"},
+    {t:"Everyone gets the same deal",
+     html:"<p>Employees, contractors, and mandataries all receive the <b>same Toggl benefits</b> and follow the same internal policies. Questions about your specific setup? Ask us during the process — we'd rather over-communicate than surprise you.</p>"}
+  ];
+
+  /* ---------- values explorer ---------- */
+  var pillsWrap = document.querySelector(".value-pills");
+  var content = document.getElementById("value-content");
+  function selectValue(i){
+    VALUES.forEach(function(v,j){ v.el.setAttribute("aria-selected", i===j ? "true" : "false"); });
+    content.innerHTML = "<h3>" + VALUES[i].name + "</h3><p>" + VALUES[i].d + "</p>";
+    if(!reduced){
+      content.classList.remove("value-fade");
+      void content.offsetWidth;
+      content.classList.add("value-fade");
+    }
+  }
+  VALUES.forEach(function(v,i){
+    var b = document.createElement("button");
+    b.className = "value-pill";
+    b.setAttribute("role","tab");
+    b.textContent = v.name;
+    b.addEventListener("click", function(){ selectValue(i); });
+    v.el = b;
+    pillsWrap.appendChild(b);
+  });
+  selectValue(0);
+
+  /* ---------- how-we-work tabs ---------- */
+  var tabsWrap = document.querySelector(".tabs");
+  var panelsWrap = document.getElementById("how-panels");
+  HOW.forEach(function(t,i){
+    var b = document.createElement("button");
+    b.className = "tab";
+    b.setAttribute("role","tab");
+    b.id = "tab-" + i;
+    b.setAttribute("aria-controls","panel-" + i);
+    b.textContent = t.tab;
+    b.addEventListener("click", function(){ selectTab(i); });
+    t.btn = b;
+    tabsWrap.appendChild(b);
+
+    var p = document.createElement("div");
+    p.className = "tab-panel";
+    p.id = "panel-" + i;
+    p.setAttribute("role","tabpanel");
+    p.setAttribute("aria-labelledby","tab-" + i);
+    p.innerHTML = "<div><h3>" + t.h + "</h3><p class='big'>" + t.big + "</p></div><div class='side'>" + t.side + "</div>";
+    t.panel = p;
+    panelsWrap.appendChild(p);
+  });
+  function selectTab(i){
+    HOW.forEach(function(t,j){
+      t.btn.setAttribute("aria-selected", i===j ? "true" : "false");
+      t.panel.classList.toggle("show", i===j);
+    });
+  }
+  selectTab(0);
+
+  /* ---------- hiring timeline ---------- */
+  var tl = document.getElementById("timeline");
+  STEPS.forEach(function(s,i){
+    var el = document.createElement("div");
+    el.className = "t-step" + (i===0 ? " open" : "");
+    el.innerHTML =
+      "<div class='t-node'>" + String(i+1).padStart(2,"0") + "</div>" +
+      "<button class='t-head' aria-expanded='" + (i===0) + "' aria-controls='t-body-" + i + "'>" +
+        "<h3>" + s.t + "</h3><span class='chev' aria-hidden='true'>+</span></button>" +
+      "<div class='t-body' id='t-body-" + i + "'><div class='t-body-in'><p>" + s.d + "</p></div></div>";
+    var head = el.querySelector(".t-head");
+    head.addEventListener("click", function(){
+      var open = el.classList.toggle("open");
+      head.setAttribute("aria-expanded", open);
+    });
+    tl.appendChild(el);
+  });
+
+  /* ---------- apply accordions ---------- */
+  var accWrap = document.getElementById("apply-accordions");
+  APPLY.forEach(function(a,i){
+    var el = document.createElement("div");
+    el.className = "acc" + (i===0 ? " open" : "");
+    el.innerHTML =
+      "<button class='acc-head' aria-expanded='" + (i===0) + "' aria-controls='acc-body-" + i + "'>" +
+        "<h3>" + a.t + "</h3><span class='chev' aria-hidden='true'>+</span></button>" +
+      "<div class='acc-body' id='acc-body-" + i + "'><div class='acc-body-in'>" + a.html + "</div></div>";
+    var head = el.querySelector(".acc-head");
+    head.addEventListener("click", function(){
+      var open = el.classList.toggle("open");
+      head.setAttribute("aria-expanded", open);
+    });
+    accWrap.appendChild(el);
+  });
+
+  /* ---------- scroll reveal (staggered) ---------- */
+  var reveals = document.querySelectorAll(".reveal");
+  if (reduced || !("IntersectionObserver" in window)) {
+    reveals.forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var pending = [];
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          var delay = (pending.push(e.target) - 1);
+          e.target.style.transitionDelay = Math.min(delay * 70, 280) + "ms";
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+      setTimeout(function(){ pending = []; }, 400);
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---------- progress bar ---------- */
+  var bar = document.querySelector(".progress");
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
+  }
+  document.addEventListener("scroll", onScroll, { passive:true });
+  onScroll();
+})();
+</script>
+</body>
+</html>
